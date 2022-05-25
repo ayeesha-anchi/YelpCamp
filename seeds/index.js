@@ -9,7 +9,7 @@ const Campground = require('../models/campground');
 //     useUnifiedTopology: true
 // });
 
-mongoose.connect('mongodb+srv://Ayeesha:Ayeesha840@cluster0.isst9.mongodb.net/camp').then((r) => console.log('conneted')).catch(e => console.log(e.message))
+mongoose.connect('mongodb+srv://Ayeesha:Ayeesha840@cluster0.isst9.mongodb.net/YelpCamp').then((r) => console.log('conneted')).catch(e => console.log(e.message))
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -23,9 +23,13 @@ const seedDB = async () => {
     await Campground.deleteMany({});
     for (let i = 0; i < 50; i++){
         const random1000 = Math.floor(Math.random() * 1000);
+        const price = Math.floor(Math.random() * 20) + 10;
         const camp = new Campground({
             location: `${cities[random1000].city},${cities[random1000].state}`,
-            title:`${sample(descriptors)} ${sample(places)}`
+            title: `${sample(descriptors)} ${sample(places)}`,
+            image:'https://source.unsplash.com/collection/483251',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur',
+            price
         })
         await camp.save();
     }

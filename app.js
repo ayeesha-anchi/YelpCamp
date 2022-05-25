@@ -12,7 +12,7 @@ const req = require('express/lib/request');
 //     useUnifiedTopology: true
 // });
 
-mongoose.connect('mongodb+srv://Ayeesha:Ayeesha840@cluster0.isst9.mongodb.net/camp').then((r) => console.log('conneted')).catch(e => console.log(e.message))
+mongoose.connect('mongodb+srv://Ayeesha:Ayeesha840@cluster0.isst9.mongodb.net/YelpCamp').then((r) => console.log('conneted')).catch(e => console.log(e.message))
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -76,6 +76,6 @@ app.delete('/campgrounds/:id', async (req, res) => {
 //     res.send(camp);
 // })
 
-app.listen(3000, () => {
-    console.log('listening on port 3000')
+app.listen(8080, () => {
+    console.log('listening on port 8080')
 })
